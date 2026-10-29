@@ -1,7 +1,13 @@
 {
   "functions": {
     "api/index.py": {
-      "runtime": "python3.12"
+      "includeFiles": "{app,frontend,database}/**"
     }
-  }
+  },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/api/index"
+    }
+  ]
 }
