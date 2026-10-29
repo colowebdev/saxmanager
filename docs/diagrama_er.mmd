@@ -1,0 +1,36 @@
+erDiagram
+    MARCAS ||--o{ SAXOFONES : "fabrica"
+    SAXOFONES ||--o{ MANTENIMIENTOS : "recibe"
+    CLIENTES ||--o{ MANTENIMIENTOS : "solicita"
+
+    MARCAS {
+        INTEGER id PK
+        TEXT nombre "UNIQUE, NOT NULL"
+        TEXT pais
+    }
+    SAXOFONES {
+        INTEGER id PK
+        INTEGER marca_id FK
+        TEXT modelo "NOT NULL"
+        TEXT tipo "Soprano|Alto|Tenor|Baritono"
+        TEXT numero_serie "UNIQUE"
+        TEXT acabado
+        INTEGER anio
+        REAL precio ">= 0"
+        TEXT estado "Disponible|Reservado|En mant.|Vendido"
+    }
+    CLIENTES {
+        INTEGER id PK
+        TEXT nombre "NOT NULL"
+        TEXT telefono
+        TEXT correo
+    }
+    MANTENIMIENTOS {
+        INTEGER id PK
+        INTEGER saxofon_id FK
+        INTEGER cliente_id FK
+        TEXT fecha "AAAA-MM-DD"
+        TEXT descripcion "NOT NULL"
+        REAL costo ">= 0"
+        TEXT estado "Pendiente|En proceso|Terminado"
+    }

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SaxManager · Tienda y taller de saxofones</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Archivo:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-icon">🎷</span>
+      <div>
+        <h1>SaxManager</h1>
+        <small>Tienda y taller de saxofones</small>
+      </div>
+    </div>
+    <nav id="menu">
+      <button class="tab activo" data-vista="inicio">Inicio</button>
+      <button class="tab" data-vista="saxofones">Saxofones</button>
+      <button class="tab" data-vista="marcas">Marcas</button>
+      <button class="tab" data-vista="clientes">Clientes</button>
+      <button class="tab" data-vista="mantenimientos">Taller</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ===== INICIO ===== -->
+    <section id="vista-inicio" class="vista activa">
+      <h2>Resumen</h2>
+      <div class="tarjetas" id="tarjetas-resumen"></div>
+      <h3>Últimos servicios de taller</h3>
+      <div class="tabla-wrap"><table id="tabla-ultimos"></table></div>
+    </section>
+
+    <!-- ===== SAXOFONES ===== -->
+    <section id="vista-saxofones" class="vista">
+      <div class="encabezado">
+        <h2>Inventario de saxofones</h2>
+        <button class="btn primario" onclick="abrirFormulario('saxofones')">+ Nuevo saxofón</button>
+      </div>
+      <div class="filtros">
+        <input type="search" id="f-buscar" placeholder="Buscar por modelo, serie o marca…">
+        <select id="f-tipo">
+          <option value="">Todos los tipos</option>
+          <option>Soprano</option><option>Alto</option><option>Tenor</option><option>Barítono</option>
+        </select>
+        <select id="f-estado">
+          <option value="">Todos los estados</option>
+          <option>Disponible</option><option>Reservado</option><option>En mantenimiento</option><option>Vendido</option>
+        </select>
+      </div>
+      <div class="tabla-wrap"><table id="tabla-saxofones"></table></div>
+    </section>
+
+    <!-- ===== MARCAS ===== -->
+    <section id="vista-marcas" class="vista">
+      <div class="encabezado">
+        <h2>Marcas</h2>
+        <button class="btn primario" onclick="abrirFormulario('marcas')">+ Nueva marca</button>
+      </div>
+      <div class="tabla-wrap"><table id="tabla-marcas"></table></div>
+    </section>
+
+    <!-- ===== CLIENTES ===== -->
+    <section id="vista-clientes" class="vista">
+      <div class="encabezado">
+        <h2>Clientes</h2>
+        <button class="btn primario" onclick="abrirFormulario('clientes')">+ Nuevo cliente</button>
+      </div>
+      <div class="tabla-wrap"><table id="tabla-clientes"></table></div>
+    </section>
+
+    <!-- ===== MANTENIMIENTOS ===== -->
+    <section id="vista-mantenimientos" class="vista">
+      <div class="encabezado">
+        <h2>Servicios de taller</h2>
+        <button class="btn primario" onclick="abrirFormulario('mantenimientos')">+ Nuevo servicio</button>
+      </div>
+      <div class="tabla-wrap"><table id="tabla-mantenimientos"></table></div>
+    </section>
+  </main>
+
+  <!-- Ventana modal reutilizable para crear/editar -->
+  <dialog id="modal">
+    <form id="formulario" method="dialog">
+      <h3 id="modal-titulo"></h3>
+      <div id="modal-campos"></div>
+      <p class="error" id="modal-error"></p>
+      <div class="acciones">
+        <button type="button" class="btn" onclick="cerrarModal()">Cancelar</button>
+        <button type="submit" class="btn primario">Guardar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="toast"></div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>
