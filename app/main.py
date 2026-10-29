@@ -35,10 +35,10 @@ app.add_middleware(
 crear_base_si_no_existe()
 
 # Rutas de la API
-app.include_router(marcas.router)
-app.include_router(saxofones.router)
-app.include_router(clientes.router)
-app.include_router(mantenimientos.router)
+app.include_router(marcas.router, prefix="/api")
+app.include_router(saxofones.router, prefix="/api")
+app.include_router(clientes.router, prefix="/api")
+app.include_router(mantenimientos.router, prefix="/api")
 
 
 # Frontend (HTML, CSS y JS)
