@@ -1,11 +1,7 @@
 {
   "functions": {
     "api/index.py": {
-      "includeFiles": [
-        "app/**",
-        "frontend/**",
-        "database/**"
-      ]
+      "includeFiles": "{app,frontend,database}/**"
     }
   },
   "rewrites": [
